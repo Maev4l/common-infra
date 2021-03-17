@@ -1,0 +1,15 @@
+#  Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# .tfvars files
+secrets.tfvars
+
+# python
+__pycache__
+
+# Terraform output
+infra.*.json
