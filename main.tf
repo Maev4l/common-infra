@@ -1,5 +1,10 @@
 terraform {
   backend "s3" {
+    bucket         = "global-tf-states"
+    region         = "eu-central-1"
+    key            = "common/terraform.tfstate"
+    encrypt        = "true"
+    dynamodb_table = "lock-terraform-state"
   }
 }
 
@@ -10,9 +15,12 @@ locals {
   }
 }
 
-
 provider "aws" {
   region = "eu-central-1"
+
+  default_tags {
+    tags = local.tags
+  }
 }
 
 provider "aws" {
