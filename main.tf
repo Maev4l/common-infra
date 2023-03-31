@@ -8,18 +8,14 @@ terraform {
   }
 }
 
-locals {
-  tags = {
-    application = "common-infra"
-    owner       = "terraform"
-  }
-}
-
 provider "aws" {
   region = "eu-central-1"
 
   default_tags {
-    tags = local.tags
+    tags = {
+      application = "common-infra"
+      owner       = "terraform"
+    }
   }
 }
 
@@ -28,11 +24,5 @@ provider "aws" {
   region = "us-east-1"
 }
 
-provider "local" {}
-
-provider "external" {}
-
-
-data "aws_iam_role" "lambda_vpc_execution_role" {
-  name = "lambda-vpc-execution-role"
+data "aws_availability_zones" "azs" {
 }

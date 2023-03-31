@@ -1,8 +1,6 @@
 
-output "imageResizeRepositoryUrl" {
-  value = aws_ecr_repository.image_resize_repository.repository_url
+output "vpc_id" {
+  value = aws_vpc.main.id
 }
 
-output "imagesRegistryId" {
-  value = aws_ecr_repository.image_resize_repository.registry_id
-}
+
